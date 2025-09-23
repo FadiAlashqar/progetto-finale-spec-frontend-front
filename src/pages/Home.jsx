@@ -4,6 +4,7 @@ import { GlobalContext } from '../contexts/GlobalContext'
 import Card from '../components/Card'
 import { useState } from 'react'
 import UseDevices from '../hooks/UseDevices'
+import { NavLink } from 'react-router-dom'
 
 const Home = () => {
 
@@ -18,7 +19,7 @@ const Home = () => {
 
 
     const handleSort = () => {
-        const obj = structuredClone(devices)
+        const obj = structuredClone(some || devices)
         obj.sort((a, b) => {
             return a.title.localeCompare(b.title) * sort
         })
@@ -74,16 +75,13 @@ const Home = () => {
             </div>
             <div className="row row-cols-3">
                 {(some ? some : devices).map((d) => {
-                    return <Card
-                        key={d.id}
-                        img={d.img}
-                        category={d.category}
-                        releaseYear={d.releaseYear}
-                        model={d.model}
-                        ram={d.ram}
-                        phoneStorage={d.phoneStorage}
-                        title={d.title}
-                    />
+                    return <NavLink to={`/details/${d.id}`}>
+                        <Card
+                            key={d.id}
+                            img={d.img}
+                            title={d.title}
+                        />
+                    </NavLink>
                 })}
             </div>
         </div>
