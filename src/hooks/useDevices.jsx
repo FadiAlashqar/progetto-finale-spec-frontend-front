@@ -12,9 +12,15 @@ function UseDevices() {
         return data
     }
 
+    const getCategory = async (value) => {
+        const res = await fetch(`http://localhost:3001/devices?category=${value}`)
+        const data = await res.json()
+        return data
+    }
 
 
-    return { getSpecificDevice }
+
+    return { getSpecificDevice, getCategory }
 }
 
 export default UseDevices
