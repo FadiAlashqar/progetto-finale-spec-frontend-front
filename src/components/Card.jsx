@@ -1,6 +1,8 @@
-import React from 'react'
+
+import React, { memo } from 'react'
 
 const Card = ({ title, category, releaseYear, model, ram, phoneStorage, img }) => {
+    console.log('Render Card:', title)
     return (
         <div className="col">
             <div className="card">
@@ -18,4 +20,4 @@ const Card = ({ title, category, releaseYear, model, ram, phoneStorage, img }) =
     )
 }
 
-export default Card
+export default React.memo(Card)

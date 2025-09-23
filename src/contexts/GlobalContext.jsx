@@ -12,7 +12,7 @@ export const GlobalProvider = ({ children }) => {
             .then((data) => setDevices(data))
     }, [])
 
-    return <GlobalContext.Provider value={{ devices }}>
+    return <GlobalContext.Provider value={{ devices, setDevices }}>
         {children}
     </GlobalContext.Provider>
 
