@@ -7,17 +7,13 @@ const DefaultLayout = ({ children }) => {
     return (
         <>
             <header>
-                <div className="row">
-                    <div className="col-12">
+                <div className="row p-3">
+                    <div className="col-4">
                         <h1>Device Shop</h1>
                     </div>
-                    <div className="col-12 d-flex justify-content-center p-3">
-                        <NavLink to='/'>Home</NavLink>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-12 d-flex justify-content-center p-3">
-
+                    <div className="col-8 d-flex justify-content-evenly">
+                        <div><NavLink to='/'>Home</NavLink></div>
+                        <div><NavLink to='/compare'>Compare</NavLink></div>
                     </div>
                 </div>
             </header>

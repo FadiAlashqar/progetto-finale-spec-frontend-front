@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '../components/Card'
+import CompareCard from '../components/CompareCard'
 import { useParams } from 'react-router-dom'
 import { GlobalContext } from '../contexts/GlobalContext'
 import { useContext } from 'react'
@@ -19,8 +19,8 @@ const DeviceDetails = () => {
                     <button>Aggiungi ai preferiti</button>
                 </div>
                 <div className="col-12">
-                    <Card
-                        key={selectedDevice.id}
+                    <CompareCard
+                        key={`id : ${selectedDevice.id}`}
                         img={selectedDevice.img}
                         title={selectedDevice.title}
                         category={selectedDevice.category}

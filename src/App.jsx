@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import DefaultLayout from './components/DefaultLayout'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import DeviceDetails from './pages/DeviceDetails'
+import ComparePage from './pages/ComparePage'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/details/:id' element={<DeviceDetails />} />
+            <Route path='/compare' element={<ComparePage />} />
           </Routes>
         </DefaultLayout>
       </GlobalProvider>

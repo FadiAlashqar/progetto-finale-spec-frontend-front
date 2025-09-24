@@ -8,7 +8,7 @@ import { NavLink } from 'react-router-dom'
 
 const Home = () => {
 
-    const { devices, setDevices } = useContext(GlobalContext)
+    const { devices, setDevices, setCompareDevice, comparedDevice } = useContext(GlobalContext)
     const [query, setQuery] = useState("")
     const { getSpecificDevice, getCategory } = UseDevices()
     const [some, setSome] = useState(null)
@@ -16,6 +16,7 @@ const Home = () => {
     const [sort, setSort] = useState(1)
 
     console.log(devices)
+    console.log(comparedDevice)
 
 
     const handleSort = () => {
@@ -28,14 +29,14 @@ const Home = () => {
 
     return (
         <div className="container">
-            <div className="row">
+            <div className="row my-3">
                 <div className="col-3">
-                    <input
+                    <input id='searchbar'
                         type="search"
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
                     />
-                    <button onClick={async () => {
+                    <button className="btn btn-primary mx-1" onClick={async () => {
                         const data = await getSpecificDevice(query)
                         const filteredDevices = devices.filter((d) => {
                             return data.some((p) => p.title === d.title)
@@ -44,7 +45,7 @@ const Home = () => {
                     }}>Search</button>
                 </div>
                 <div className="col-3">
-                    <button onClick={() => {
+                    <button className="btn btn-primary" onClick={() => {
                         setSome(null)
                         setQuery("")
                     }}>Reset</button>
@@ -58,7 +59,7 @@ const Home = () => {
                         <option value="Smartphone">Smartphone</option>
                         <option value="Tablet">Tablet</option>
                     </select>
-                    <button onClick={async () => {
+                    <button className="btn btn-primary" onClick={async () => {
                         const data = await getCategory(categoryValue)
                         const category = devices.filter((d) => {
                             return data.some((p) => p.title === d.title)
@@ -67,21 +68,22 @@ const Home = () => {
                     }}>Search</button>
                 </div>
                 <div className="col-3">
-                    <button onClick={() => {
+                    <button className="btn btn-primary" onClick={() => {
                         handleSort()
                         sort === 1 ? setSort(-1) : setSort(1)
                     }}>A-Z </button>
                 </div>
             </div>
-            <div className="row row-cols-3">
+            <div className="row row-cols-3 g-3 justify-content-evenly">
                 {(some ? some : devices).map((d) => {
-                    return <NavLink to={`/details/${d.id}`}>
+                    return <div key={d.id} className="col">
                         <Card
-                            key={d.id}
                             img={d.img}
                             title={d.title}
+                            addCompare={() => setCompareDevice((prev) => [...prev, d])}
+                            id={d.id}
                         />
-                    </NavLink>
+                    </div>
                 })}
             </div>
         </div>
