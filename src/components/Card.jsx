@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { useContext } from 'react'
 import { GlobalContext } from '../contexts/GlobalContext'
 
-const Card = ({ title, category, releaseYear, model, ram, phoneStorage, img, addCompare, id }) => {
+const Card = ({ title, category, releaseYear, model, ram, phoneStorage, img, addCompare, id, addFav }) => {
     console.log('Render Card:', title)
     const { comparedDevice } = useContext(GlobalContext)
 
@@ -19,7 +19,10 @@ const Card = ({ title, category, releaseYear, model, ram, phoneStorage, img, add
                 <p>{model}</p>
                 <p>{ram}</p>
                 <p>{phoneStorage}</p>
-                <button disabled={comparedDevice.length >= 2} onClick={addCompare} className="btn btn-primary">Compare</button>
+                <div className='d-flex justify-content-evenly'>
+                    <button disabled={comparedDevice.length >= 2} onClick={addCompare} className="btn btn-primary">Compare</button>
+                    <button className='btn btn-danger' onClick={addFav}><i className="fa-solid fa-heart"></i></button>
+                </div>
             </div>
         </div>
     )

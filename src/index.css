@@ -33,3 +33,13 @@
   color: #333;
   font-size: 14px;
 }
+
+.fav-card {
+  height: 500px;
+  width: 300px;
+}
+
+.fav-card .card-img-top {
+  height: 150px;
+  width: 180px;
+}

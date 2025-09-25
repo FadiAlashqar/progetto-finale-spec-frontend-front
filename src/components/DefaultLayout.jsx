@@ -14,6 +14,7 @@ const DefaultLayout = ({ children }) => {
                     <div className="col-8 d-flex justify-content-evenly">
                         <div><NavLink to='/'>Home</NavLink></div>
                         <div><NavLink to='/compare'>Compare</NavLink></div>
+                        <div><NavLink to='/favourites'>Favourites</NavLink></div>
                     </div>
                 </div>
             </header>

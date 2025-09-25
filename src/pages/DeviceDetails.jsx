@@ -16,9 +16,6 @@ const DeviceDetails = () => {
         <div className="container">
             <div className="row">
                 <div className="col-12">
-                    <button>Aggiungi ai preferiti</button>
-                </div>
-                <div className="col-12">
                     <CompareCard
                         key={`id : ${selectedDevice.id}`}
                         img={selectedDevice.img}

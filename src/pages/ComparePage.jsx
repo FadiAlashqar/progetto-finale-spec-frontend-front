@@ -24,9 +24,11 @@ const ComparePage = () => {
                             phoneStorage={c.phoneStorage}
                         />
                     })}
-                    <div className="comparator">
-                        <span className='vs'>VS</span>
-                    </div>
+                    {
+                        comparedDevice.length > 0 && <div className="comparator">
+                            <span className='vs'>VS</span>
+                        </div>
+                    }
                 </div>
             </div>
         </div>

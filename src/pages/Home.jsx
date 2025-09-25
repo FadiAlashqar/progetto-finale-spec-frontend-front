@@ -8,7 +8,7 @@ import { NavLink } from 'react-router-dom'
 
 const Home = () => {
 
-    const { devices, setDevices, setCompareDevice, comparedDevice } = useContext(GlobalContext)
+    const { devices, setDevices, setCompareDevice, comparedDevice, favDevice, setFavDevice } = useContext(GlobalContext)
     const [query, setQuery] = useState("")
     const { getSpecificDevice, getCategory } = UseDevices()
     const [some, setSome] = useState(null)
@@ -17,6 +17,7 @@ const Home = () => {
 
     console.log(devices)
     console.log(comparedDevice)
+    console.log(favDevice)
 
 
     const handleSort = () => {
@@ -59,7 +60,7 @@ const Home = () => {
                         <option value="Smartphone">Smartphone</option>
                         <option value="Tablet">Tablet</option>
                     </select>
-                    <button className="btn btn-primary" onClick={async () => {
+                    <button className="btn btn-primary mx-1" onClick={async () => {
                         const data = await getCategory(categoryValue)
                         const category = devices.filter((d) => {
                             return data.some((p) => p.title === d.title)
@@ -82,6 +83,7 @@ const Home = () => {
                             title={d.title}
                             addCompare={() => setCompareDevice((prev) => [...prev, d])}
                             id={d.id}
+                            addFav={() => setFavDevice((prev) => [...prev, d])}
                         />
                     </div>
                 })}
